@@ -611,17 +611,22 @@ async function joinPublicRoom(id,r){
 }
 
 /* ── ENTER ROOM ── */
-function enterRoom(roomId,roomData){
-  currentRoom=roomId;currentRoomData=roomData;
+async function enterRoom(roomId,roomData){
+  // Always fetch fresh data from Firebase so owner field is always correct
+  try{
+    const snap=await get(ref(db,'rooms/'+roomId));
+    if(snap.exists()) roomData={...snap.val(),id:roomId};
+  }catch(e){ console.warn('Could not refresh room data:',e); }
+  currentRoom=roomId; currentRoomData=roomData;
   rendered.clear();
-  Object.values(msgTimers).forEach(clearTimeout);msgTimers={};
+  Object.values(msgTimers).forEach(clearTimeout); msgTimers={};
   $('ma').innerHTML='<div class="es" id="es">// SECURE CHANNEL OPEN<br><br>Messages auto-delete after 10 minutes</div>';
   $('chat-title').textContent=roomData.name||'ROOM';
   $('chat-subt').textContent=(roomData.type==='private'?'🔒 PRIVATE':'🌐 PUBLIC')+' · '+roomId.slice(0,8).toUpperCase();
   const isOwner=roomData.owner===myUid;
   $('dd-delete').style.display=isOwner?'flex':'none';
   show('cs');
-  watchConn();updatePres();watchRoomPres();watchTyp();listenMsgs();watchRoomDeleted();
+  watchConn(); updatePres(); watchRoomPres(); watchTyp(); listenMsgs(); watchRoomDeleted();
   setInterval(cleanup,60000);
 }
 
@@ -671,25 +676,34 @@ $('del-close').addEventListener('click',()=>$('delete-modal').classList.remove('
 $('delete-modal').addEventListener('click',e=>{if(e.target===$('delete-modal'))$('delete-modal').classList.remove('open');});
 $('del-submit').addEventListener('click',async()=>{
   const confirmed=$('del-confirm').value.trim();
-  if(!currentRoomData||confirmed!==currentRoomData.name){toast('> Room name does not match');return;}
-  if(currentRoomData.owner!==myUid){toast('> Only owner can delete');return;}
+  if(!confirmed){toast('> Type room name to confirm');return;}
+  // Re-fetch fresh room data from Firebase
+  let freshRoom=null;
   try{
-    // Delete storage files
+    const snap=await get(ref(db,'rooms/'+currentRoom));
+    if(!snap.exists()){toast('> Room already deleted');$('delete-modal').classList.remove('open');cleanup_leave();show('hs');return;}
+    freshRoom=snap.val();
+  }catch(e){toast('> Error verifying room: '+e.message);return;}
+  if(confirmed!==freshRoom.name){toast('> Type exact name: "'+freshRoom.name+'"');return;}
+  if(freshRoom.owner!==myUid){toast('> Only the owner can delete this room');return;}
+  const btn=$('del-submit');
+  const origHTML=btn.innerHTML;
+  btn.innerHTML='<span>DELETING...</span>';btn.disabled=true;
+  try{
+    await remove(ref(db,'rooms/'+currentRoom));
+    remove(ref(db,'voice/'+currentRoom)).catch(()=>{});
+    remove(ref(db,'signals/'+currentRoom)).catch(()=>{});
+    remove(ref(db,'typing/'+currentRoom)).catch(()=>{});
     try{
       const folderRef=sRef(storage,'rooms/'+currentRoom+'/');
       const res=await listAll(folderRef);
-      await Promise.all(res.items.map(item=>deleteObject(item).catch(()=>{})));
+      if(res.items.length)await Promise.all(res.items.map(i=>deleteObject(i).catch(()=>{})));
     }catch(e){}
-    // Delete voice signaling
-    await remove(ref(db,'voice/'+currentRoom)).catch(()=>{});
-    // Delete room (messages + members inside)
-    await remove(ref(db,'rooms/'+currentRoom));
     $('delete-modal').classList.remove('open');
-    toast('> Room deleted.');
-    endVoiceCall();
-    cleanup_leave();
-    show('hs');
-  }catch(e){toast('> Error: '+e.message);}
+    toast('> Room deleted successfully.');
+    endVoiceCall();cleanup_leave();show('hs');
+  }catch(e){toast('> Delete failed: '+e.message);console.error(e);}
+  btn.innerHTML=origHTML;btn.disabled=false;
 });
 
 /* ══════════════════════════════════════════
