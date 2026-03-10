@@ -18,15 +18,13 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;
   background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,.12) 2px,rgba(0,0,0,.12) 4px)}
 #mx{position:fixed;inset:0;opacity:.035;z-index:0}
 
-/* ── SCREENS ── */
 .scr{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;z-index:10}
 .scr.off{display:none!important}
 
-/* ── SHARED BOX ── */
+/* BOX */
 .box{width:min(440px,93vw);border:1px solid var(--gd);background:var(--s);padding:32px 28px;position:relative;
   clip-path:polygon(0 0,calc(100% - 14px) 0,100% 14px,100% 100%,14px 100%,0 calc(100% - 14px))}
-.box::before{content:'';position:absolute;inset:0;pointer-events:none;
-  background:linear-gradient(135deg,rgba(0,204,68,.03),transparent 55%)}
+.box::before{content:'';position:absolute;inset:0;pointer-events:none;background:linear-gradient(135deg,rgba(0,204,68,.03),transparent 55%)}
 .logo{font-family:var(--hk);font-size:clamp(20px,5vw,28px);font-weight:900;letter-spacing:4px;text-align:center;margin-bottom:3px}
 .sub{font-size:9px;color:var(--td);text-align:center;letter-spacing:3px;margin-bottom:28px;text-transform:uppercase}
 .lbl{font-size:9px;letter-spacing:2px;color:var(--td);margin-bottom:6px;text-transform:uppercase}
@@ -36,12 +34,10 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;
 .inp::placeholder{color:var(--tf)}
 .inp-sm{font-size:12px;padding:9px 12px}
 .hint{font-size:9px;color:var(--tf);margin-top:6px;letter-spacing:.8px}
-.gap{height:14px}
-.gap-sm{height:8px}
+.gap{height:14px}.gap-sm{height:8px}
 .btn{width:100%;background:transparent;border:1px solid var(--g);color:var(--g);font-family:var(--hk);
   font-size:11px;letter-spacing:2px;padding:12px;cursor:pointer;text-transform:uppercase;transition:all .2s;
-  clip-path:polygon(0 0,calc(100% - 8px) 0,100% 8px,100% 100%,8px 100%,0 calc(100% - 8px));
-  position:relative;overflow:hidden}
+  clip-path:polygon(0 0,calc(100% - 8px) 0,100% 8px,100% 100%,8px 100%,0 calc(100% - 8px));position:relative;overflow:hidden}
 .btn::before{content:'';position:absolute;inset:0;background:var(--g);transform:translateX(-100%);transition:transform .2s}
 .btn:hover::before{transform:translateX(0)}
 .btn:hover{color:var(--bg)}
@@ -50,57 +46,72 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;
 .btn-sec{border-color:var(--gd);color:var(--td)}
 .btn-sec::before{background:var(--gf)}
 .btn-sec:hover{color:var(--g)}
+.btn-red{border-color:var(--red);color:var(--red)}
+.btn-red::before{background:var(--red)}
+.btn-red:hover{color:#fff}
 .divider{border:none;border-top:1px solid var(--bd);margin:22px 0}
 .row2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .dot{width:6px;height:6px;border-radius:50%;background:var(--g);animation:blink 1.2s infinite;flex-shrink:0}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:.2}}
 .bst{font-size:9px;color:var(--tf);letter-spacing:1px;display:flex;align-items:center;gap:8px;margin-top:16px}
-.tag{display:inline-flex;align-items:center;gap:5px;font-size:9px;padding:3px 8px;border:1px solid;letter-spacing:1px}
+.tag{display:inline-flex;align-items:center;gap:4px;font-size:9px;padding:2px 7px;border:1px solid;letter-spacing:1px}
 .tag-pub{border-color:var(--gd);color:var(--td)}
 .tag-prv{border-color:var(--orange);color:var(--orange)}
+.tog-btn{flex:1;padding:9px;font-size:10px;letter-spacing:1px;border:1px solid var(--bd);background:transparent;color:var(--tf);cursor:pointer;font-family:var(--mono);transition:all .2s;text-transform:uppercase}
+.tog-btn.active{border-color:var(--g);color:var(--g);background:var(--gf)}
+.toggle-row{display:flex;gap:8px;margin-bottom:4px}
 
-/* ── NICKNAME SCREEN ── */
-#ns{flex-direction:column;background:var(--bg)}
-
-/* ── HOME SCREEN ── */
+/* HOME */
 #hs{flex-direction:column;background:var(--bg)}
-.home-header{width:min(440px,93vw);display:flex;align-items:center;justify-content:space-between;margin-bottom:16px}
+.home-header{width:min(440px,93vw);display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
 .home-nick{font-size:11px;color:var(--td);letter-spacing:1px}
 .home-nick span{color:var(--g)}
-.groups-list{width:min(440px,93vw);max-height:220px;overflow-y:auto;margin-bottom:16px;
-  scrollbar-width:thin;scrollbar-color:var(--gd) transparent}
+.groups-list{width:min(440px,93vw);max-height:200px;overflow-y:auto;margin-bottom:14px;scrollbar-width:thin;scrollbar-color:var(--gd) transparent}
 .groups-list::-webkit-scrollbar{width:3px}
 .groups-list::-webkit-scrollbar-thumb{background:var(--gd)}
-.group-item{display:flex;align-items:center;justify-content:space-between;padding:10px 14px;
-  background:var(--s);border:1px solid var(--bd);margin-bottom:6px;cursor:pointer;transition:all .2s}
+.group-item{display:flex;align-items:center;justify-content:space-between;padding:10px 14px;background:var(--s);border:1px solid var(--bd);margin-bottom:5px;cursor:pointer;transition:all .2s}
 .group-item:hover{border-color:var(--gd);background:var(--s2)}
 .gi-left{display:flex;flex-direction:column;gap:3px}
 .gi-name{font-size:12px;letter-spacing:1px;color:var(--g)}
-.gi-meta{font-size:9px;color:var(--tf);letter-spacing:.8px;display:flex;align-items:center;gap:8px}
-.gi-right{display:flex;align-items:center;gap:8px}
-.no-groups{text-align:center;color:var(--tf);font-size:10px;letter-spacing:1px;padding:24px;opacity:.6}
+.gi-meta{font-size:9px;color:var(--tf);letter-spacing:.8px;display:flex;align-items:center;gap:7px;flex-wrap:wrap}
+.no-groups{text-align:center;color:var(--tf);font-size:10px;letter-spacing:1px;padding:22px;opacity:.6}
 
-/* ── CREATE GROUP SCREEN ── */
-#cgs{flex-direction:column;background:var(--bg)}
-.toggle-row{display:flex;gap:8px;margin-bottom:4px}
-.tog-btn{flex:1;padding:9px;font-size:10px;letter-spacing:1px;border:1px solid var(--bd);
-  background:transparent;color:var(--tf);cursor:pointer;font-family:var(--mono);transition:all .2s;text-transform:uppercase}
-.tog-btn.active{border-color:var(--g);color:var(--g);background:var(--gf)}
-
-/* ── JOIN SCREEN ── */
-#js{flex-direction:column;background:var(--bg)}
-
-/* ── CHAT SCREEN ── */
+/* CHAT */
 #cs{flex-direction:column;background:var(--bg);align-items:stretch;justify-content:flex-start}
 .cbar{text-align:center;font-size:9px;letter-spacing:2px;padding:3px;background:var(--gf);color:var(--gp);flex-shrink:0;display:none}
 .cbar.show{display:block}
-.hdr{display:flex;align-items:center;justify-content:space-between;padding:8px 14px;background:var(--s);
-  border-bottom:1px solid var(--bd);flex-shrink:0;position:relative;z-index:20;min-height:50px;gap:8px}
+
+/* VOICE BAR */
+.voice-bar{display:none;align-items:center;justify-content:space-between;padding:6px 14px;background:#0a180a;border-bottom:1px solid var(--gd);flex-shrink:0;z-index:15;gap:8px}
+.voice-bar.active{display:flex}
+.voice-info{display:flex;align-items:center;gap:8px;flex:1;min-width:0;overflow:hidden}
+.voice-status{font-size:9px;color:var(--gp);letter-spacing:1px;white-space:nowrap}
+.voice-peers{display:flex;gap:4px;flex-wrap:nowrap;overflow-x:auto;max-width:200px}
+.voice-peer{font-size:8px;color:var(--td);padding:2px 6px;border:1px solid var(--gd);letter-spacing:.5px;white-space:nowrap;display:flex;align-items:center;gap:3px}
+.voice-peer.speaking{border-color:var(--g);color:var(--g);animation:pulse-border .6s infinite alternate}
+@keyframes pulse-border{from{box-shadow:0 0 0 0 rgba(0,204,68,0)}to{box-shadow:0 0 0 3px rgba(0,204,68,.2)}}
+.voice-controls{display:flex;gap:6px;align-items:center;flex-shrink:0}
+.mic-btn{background:var(--gf);border:1px solid var(--g);color:var(--g);cursor:pointer;width:34px;height:34px;
+  display:flex;align-items:center;justify-content:center;transition:all .2s;flex-shrink:0}
+.mic-btn svg{width:16px;height:16px}
+.mic-btn.muted{background:rgba(204,34,0,.15);border-color:var(--red);color:var(--red)}
+.end-call-btn{background:rgba(204,34,0,.2);border:1px solid var(--red);color:var(--red);cursor:pointer;
+  padding:5px 10px;font-size:9px;letter-spacing:1px;font-family:var(--mono);transition:all .2s;white-space:nowrap}
+.end-call-btn:hover{background:var(--red);color:#fff}
+.call-wave{display:flex;align-items:center;gap:2px}
+.call-wave span{display:block;width:3px;background:var(--g);border-radius:2px;animation:wave 1s infinite ease-in-out}
+.call-wave span:nth-child(1){height:6px;animation-delay:0s}
+.call-wave span:nth-child(2){height:12px;animation-delay:.15s}
+.call-wave span:nth-child(3){height:8px;animation-delay:.3s}
+.call-wave span:nth-child(4){height:14px;animation-delay:.45s}
+.call-wave span:nth-child(5){height:6px;animation-delay:.6s}
+@keyframes wave{0%,100%{transform:scaleY(.4)}50%{transform:scaleY(1)}}
+
+.hdr{display:flex;align-items:center;justify-content:space-between;padding:8px 14px;background:var(--s);border-bottom:1px solid var(--bd);flex-shrink:0;position:relative;z-index:20;min-height:50px;gap:8px}
 .hl{display:flex;align-items:center;gap:8px;flex-shrink:0}
 .hc{flex:1;min-width:0;text-align:center}
 .hr{display:flex;align-items:center;gap:6px;flex-shrink:0}
-.bbtn{background:none;border:1px solid var(--gd);color:var(--g);font-family:var(--mono);font-size:10px;
-  padding:5px 9px;cursor:pointer;letter-spacing:1px;transition:all .2s;display:flex;align-items:center;gap:4px;white-space:nowrap}
+.bbtn{background:none;border:1px solid var(--gd);color:var(--g);font-family:var(--mono);font-size:10px;padding:5px 9px;cursor:pointer;letter-spacing:1px;transition:all .2s;display:flex;align-items:center;gap:4px;white-space:nowrap}
 .bbtn:hover{background:var(--gf);border-color:var(--g)}
 .bbtn svg{width:11px;height:11px}
 .htitle{font-family:var(--hk);font-size:clamp(10px,2.5vw,14px);font-weight:700;letter-spacing:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
@@ -110,21 +121,26 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;
 .mbtn:hover{color:var(--g)}
 .mbtn span{display:block;width:3px;height:3px;border-radius:50%;background:currentColor}
 .mwrap{position:relative}
-.dd{position:absolute;top:calc(100% + 4px);right:0;background:var(--s2);border:1px solid var(--bd);
-  min-width:210px;z-index:200;display:none;clip-path:polygon(0 0,calc(100% - 8px) 0,100% 8px,100% 100%,0 100%)}
+.dd{position:absolute;top:calc(100% + 4px);right:0;background:var(--s2);border:1px solid var(--bd);min-width:210px;z-index:200;display:none;clip-path:polygon(0 0,calc(100% - 8px) 0,100% 8px,100% 100%,0 100%)}
 .dd.open{display:block;animation:di .15s ease}
 @keyframes di{from{opacity:0;transform:translateY(-5px)}to{opacity:1;transform:translateY(0)}}
-.ditem{display:flex;align-items:center;gap:10px;padding:11px 14px;font-size:10px;letter-spacing:1px;
-  color:var(--td);text-decoration:none;border-bottom:1px solid var(--bd);transition:all .15s;cursor:pointer;background:none;width:100%;font-family:var(--mono)}
+.ditem{display:flex;align-items:center;gap:10px;padding:11px 14px;font-size:10px;letter-spacing:1px;color:var(--td);text-decoration:none;border-bottom:1px solid var(--bd);transition:all .15s;cursor:pointer;background:none;width:100%;font-family:var(--mono);text-align:left}
 .ditem:last-child{border-bottom:none}
 .ditem:hover{background:var(--gf);color:var(--g)}
 .ditem svg{width:13px;height:13px;flex-shrink:0}
 .ditem.red{color:var(--red)}
 .ditem.red:hover{background:rgba(204,34,0,.1);color:var(--red)}
 
-/* messages */
-.ma{flex:1;overflow-y:auto;overflow-x:hidden;padding:10px 14px;display:flex;flex-direction:column;gap:0;
-  scroll-behavior:smooth;position:relative;z-index:10;scrollbar-width:thin;scrollbar-color:var(--gd) transparent}
+/* VOICE JOIN BTN in header */
+.voice-join-btn{background:var(--gf);border:1px solid var(--gd);color:var(--td);cursor:pointer;
+  padding:5px 10px;font-size:9px;letter-spacing:1px;font-family:var(--mono);transition:all .2s;
+  display:flex;align-items:center;gap:5px;white-space:nowrap}
+.voice-join-btn:hover{border-color:var(--g);color:var(--g)}
+.voice-join-btn.in-call{border-color:var(--g);color:var(--g);background:rgba(0,204,68,.1)}
+.voice-join-btn svg{width:13px;height:13px}
+
+/* MESSAGES */
+.ma{flex:1;overflow-y:auto;overflow-x:hidden;padding:10px 14px;display:flex;flex-direction:column;gap:0;scroll-behavior:smooth;position:relative;z-index:10;scrollbar-width:thin;scrollbar-color:var(--gd) transparent}
 .ma::-webkit-scrollbar{width:3px}
 .ma::-webkit-scrollbar-thumb{background:var(--gd);border-radius:2px}
 .es{text-align:center;color:var(--tf);font-size:10px;letter-spacing:2px;padding:40px 20px;opacity:.6;line-height:1.8}
@@ -145,73 +161,59 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;
 .mfile{display:flex;align-items:center;gap:7px;padding:7px 11px;background:var(--bg);border:1px solid var(--gd);font-size:10px;color:var(--td);text-decoration:none;transition:all .15s}
 .mfile:hover{color:var(--g);border-color:var(--g)}
 .mfile svg{width:14px;height:14px;flex-shrink:0}
-.sys-msg{text-align:center;font-size:9px;color:var(--tf);letter-spacing:1px;padding:6px 0;opacity:.5;margin:3px 0}
+.sys-msg{text-align:center;font-size:9px;color:var(--tf);letter-spacing:1px;padding:5px 0;opacity:.5;margin:2px 0}
 .ti{padding:3px 14px;font-size:9px;color:var(--tf);letter-spacing:1px;min-height:18px;flex-shrink:0}
 
-/* input */
+/* INPUT */
 .ia{background:var(--s);border-top:1px solid var(--bd);padding:9px 10px;flex-shrink:0;z-index:20;position:relative}
-.fp{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:7px;max-height:75px;overflow-y:auto}
+.fp{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:7px;max-height:70px;overflow-y:auto}
 .fpi{background:var(--bg);border:1px solid var(--gd);padding:3px 7px;font-size:9px;color:var(--td);display:flex;align-items:center;gap:5px;max-width:130px}
-.fpi img{width:28px;height:28px;object-fit:cover}
+.fpi img{width:26px;height:26px;object-fit:cover}
 .fpi span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .rf{background:none;border:none;color:var(--red);cursor:pointer;font-size:11px;line-height:1;flex-shrink:0}
 .ir{display:flex;align-items:flex-end;gap:7px}
-.ab{background:none;border:1px solid var(--gd);color:var(--td);cursor:pointer;width:38px;height:38px;
-  display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .2s}
+.ab{background:none;border:1px solid var(--gd);color:var(--td);cursor:pointer;width:38px;height:38px;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .2s}
 .ab:hover{border-color:var(--g);color:var(--g);background:var(--gf)}
 .ab svg{width:17px;height:17px}
 #fi{display:none}
-.mi2{flex:1;background:var(--bg);border:1px solid var(--gd);color:var(--g);font-family:var(--mono);
-  font-size:13px;padding:9px 11px;outline:none;resize:none;min-height:38px;max-height:110px;line-height:1.4;
-  caret-color:var(--g);transition:border-color .2s;overflow-y:auto;letter-spacing:.4px}
+.mi2{flex:1;background:var(--bg);border:1px solid var(--gd);color:var(--g);font-family:var(--mono);font-size:13px;padding:9px 11px;outline:none;resize:none;min-height:38px;max-height:110px;line-height:1.4;caret-color:var(--g);transition:border-color .2s;overflow-y:auto;letter-spacing:.4px}
 .mi2:focus{border-color:var(--g)}
 .mi2::placeholder{color:var(--tf)}
-.sb{background:var(--gf);border:1px solid var(--g);color:var(--g);cursor:pointer;width:38px;height:38px;
-  display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .2s;
-  clip-path:polygon(0 0,calc(100% - 7px) 0,100% 7px,100% 100%,0 100%)}
+.sb{background:var(--gf);border:1px solid var(--g);color:var(--g);cursor:pointer;width:38px;height:38px;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .2s;clip-path:polygon(0 0,calc(100% - 7px) 0,100% 7px,100% 100%,0 100%)}
 .sb:hover{background:var(--g);color:var(--bg)}
 .sb:active{transform:scale(.95)}
 .sb svg{width:17px;height:17px}
 @keyframes spin{to{transform:rotate(360deg)}}
 .sb.loading svg{animation:spin .6s linear infinite}
 
-/* invite modal */
-.modal-bg{position:fixed;inset:0;background:rgba(0,0,0,.8);z-index:500;display:none;align-items:center;justify-content:center}
+/* MODALS */
+.modal-bg{position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:500;display:none;align-items:center;justify-content:center}
 .modal-bg.open{display:flex}
-.modal{width:min(380px,90vw);background:var(--s);border:1px solid var(--gd);padding:24px;position:relative;
-  clip-path:polygon(0 0,calc(100% - 12px) 0,100% 12px,100% 100%,12px 100%,0 calc(100% - 12px))}
+.modal{width:min(380px,90vw);background:var(--s);border:1px solid var(--gd);padding:24px;position:relative;clip-path:polygon(0 0,calc(100% - 12px) 0,100% 12px,100% 100%,12px 100%,0 calc(100% - 12px))}
 .modal-title{font-family:var(--hk);font-size:13px;letter-spacing:2px;margin-bottom:16px;color:var(--g)}
-.url-box{background:var(--bg);border:1px solid var(--gd);padding:10px 12px;font-size:11px;color:var(--gp);
-  letter-spacing:.5px;word-break:break-all;margin-bottom:12px;line-height:1.5}
 .modal-close{position:absolute;top:10px;right:12px;background:none;border:none;color:var(--td);cursor:pointer;font-size:16px;line-height:1}
 .modal-close:hover{color:var(--g)}
-.code-display{background:var(--bg);border:1px solid var(--orange);padding:10px 12px;font-size:13px;
-  color:var(--orange);letter-spacing:3px;text-align:center;margin-bottom:8px;font-family:var(--hk)}
-.code-hint{font-size:9px;color:var(--tf);letter-spacing:1px;text-align:center;margin-bottom:12px}
+.url-box{background:var(--bg);border:1px solid var(--gd);padding:10px 12px;font-size:11px;color:var(--gp);letter-spacing:.5px;word-break:break-all;margin-bottom:12px;line-height:1.5}
+.code-display{background:var(--bg);border:1px solid var(--orange);padding:10px 12px;font-size:13px;color:var(--orange);letter-spacing:3px;text-align:center;margin-bottom:8px;font-family:var(--hk)}
+.warn-box{background:rgba(204,34,0,.08);border:1px solid var(--red);padding:12px;font-size:10px;color:var(--red);letter-spacing:.8px;line-height:1.6;margin-bottom:14px}
 
-/* toast */
-.toast{position:fixed;bottom:75px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--s2);
-  border:1px solid var(--gd);color:var(--td);font-size:10px;letter-spacing:1px;padding:7px 14px;
-  z-index:9990;opacity:0;pointer-events:none;transition:all .3s;white-space:nowrap;max-width:90vw;text-align:center}
+/* TOAST */
+.toast{position:fixed;bottom:75px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--s2);border:1px solid var(--gd);color:var(--td);font-size:10px;letter-spacing:1px;padding:7px 14px;z-index:9990;opacity:0;pointer-events:none;transition:all .3s;white-space:nowrap;max-width:90vw;text-align:center}
 .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
-
-/* lightbox */
 #lb{display:none;position:fixed;inset:0;background:rgba(0,0,0,.93);z-index:9998;align-items:center;justify-content:center;cursor:zoom-out}
 #lb.open{display:flex}
 #lb img{max-width:90vw;max-height:90vh;object-fit:contain}
 
-/* url bar hint */
-.url-hint{font-size:9px;color:var(--tf);letter-spacing:.8px;margin-top:5px;word-break:break-all;line-height:1.5}
-
 @media(max-width:480px){
-  .mr{max-width:86%}.box{padding:24px 18px}.ma{padding:8px 10px}.ia{padding:7px 8px}.htitle{letter-spacing:1px}
+  .mr{max-width:86%}.box{padding:24px 18px}.ma{padding:8px 10px}.ia{padding:7px 8px}
+  .voice-peers{max-width:120px}
 }
 </style>
 </head>
 <body>
 <canvas id="mx"></canvas>
 
-<!-- ═══ NICKNAME SCREEN ═══ -->
+<!-- NICKNAME -->
 <div class="scr" id="ns">
   <div class="box">
     <div class="logo">GHOSTLINE</div>
@@ -221,11 +223,11 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;
     <div class="hint">> Saved locally only. No one else sees this.</div>
     <div class="gap"></div>
     <button class="btn" id="ni-btn"><span>[ CONTINUE ]</span></button>
-    <div class="bst"><span class="dot"></span><span id="bst-txt">INITIALIZING SECURE NODE...</span></div>
+    <div class="bst"><span class="dot"></span><span id="bst-txt">INITIALIZING...</span></div>
   </div>
 </div>
 
-<!-- ═══ HOME SCREEN ═══ -->
+<!-- HOME -->
 <div class="scr off" id="hs">
   <div class="home-header">
     <div class="home-nick">> <span id="hn-display"></span></div>
@@ -234,27 +236,19 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;
       <div class="mwrap">
         <button class="mbtn" id="home-mbtn"><span></span><span></span><span></span></button>
         <div class="dd" id="home-dd">
-          <a class="ditem" href="https://rehan-sandhi.blogspot.com/2026/02/my-license.html" target="_blank">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>LICENSE</a>
-          <a class="ditem" href="https://www.blogger.com/profile/09062209598930883091" target="_blank">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>PROFILE</a>
-          <a class="ditem" href="https://instagram.com/rehan_sandhi_181" target="_blank">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>INSTAGRAM</a>
-          <a class="ditem" href="https://rehansandhi181.blogspot.com" target="_blank">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>PORTFOLIO</a>
-          <a class="ditem" href="https://rehansandhi.netlify.app" target="_blank">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 010 20M12 2a15 15 0 000 20"/></svg>RS DIGITAL ECOSYSTEM</a>
-          <a class="ditem" href="https://rs-appstore.blogspot.com" target="_blank">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>RS APP STORE</a>
+          <a class="ditem" href="https://rehan-sandhi.blogspot.com/2026/02/my-license.html" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>LICENSE</a>
+          <a class="ditem" href="https://www.blogger.com/profile/09062209598930883091" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>PROFILE</a>
+          <a class="ditem" href="https://instagram.com/rehan_sandhi_181" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>INSTAGRAM</a>
+          <a class="ditem" href="https://rehansandhi181.blogspot.com" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>PORTFOLIO</a>
+          <a class="ditem" href="https://rehansandhi.netlify.app" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 010 20M12 2a15 15 0 000 20"/></svg>RS DIGITAL ECOSYSTEM</a>
+          <a class="ditem" href="https://rs-appstore.blogspot.com" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>RS APP STORE</a>
         </div>
       </div>
     </div>
   </div>
   <div class="box" style="padding-top:20px;padding-bottom:20px">
     <div class="lbl" style="margin-bottom:10px">// Active Rooms</div>
-    <div class="groups-list" id="groups-list">
-      <div class="no-groups">NO ROOMS FOUND<br><span style="opacity:.5">Create or join one below</span></div>
-    </div>
+    <div class="groups-list" id="groups-list"><div class="no-groups">NO ROOMS FOUND<br><span style="opacity:.5">Create or join one below</span></div></div>
     <div class="row2">
       <button class="btn btn-sm" id="go-create"><span>[ + CREATE ]</span></button>
       <button class="btn btn-sm btn-sec" id="go-join"><span>[ JOIN ]</span></button>
@@ -262,7 +256,7 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;
   </div>
 </div>
 
-<!-- ═══ CREATE GROUP SCREEN ═══ -->
+<!-- CREATE GROUP -->
 <div class="scr off" id="cgs">
   <div class="box">
     <div style="display:flex;align-items:center;gap:10px;margin-bottom:20px">
@@ -277,19 +271,19 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;
       <button class="tog-btn active" id="tog-pub" onclick="setType('public')">🌐 PUBLIC</button>
       <button class="tog-btn" id="tog-prv" onclick="setType('private')">🔒 PRIVATE</button>
     </div>
-    <div class="hint">Public = anyone can join. Private = secret code required.</div>
+    <div class="hint">Public = anyone can join · Private = secret code required</div>
     <div id="code-section" style="display:none">
       <div class="gap-sm"></div>
-      <div class="lbl">Secret Code (you set this)</div>
+      <div class="lbl">Secret Code</div>
       <input class="inp inp-sm" id="cg-code" type="text" placeholder="Set a secret code..." maxlength="20" autocomplete="off" spellcheck="false">
-      <div class="hint">> Share this code only with people you trust.</div>
+      <div class="hint">> Share this only with trusted people.</div>
     </div>
     <div class="gap"></div>
     <button class="btn" id="cg-submit"><span>[ CREATE ROOM ]</span></button>
   </div>
 </div>
 
-<!-- ═══ JOIN SCREEN ═══ -->
+<!-- JOIN -->
 <div class="scr off" id="js">
   <div class="box">
     <div style="display:flex;align-items:center;gap:10px;margin-bottom:20px">
@@ -309,9 +303,11 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;
   </div>
 </div>
 
-<!-- ═══ CHAT SCREEN ═══ -->
+<!-- CHAT -->
 <div class="scr off" id="cs">
   <div class="cbar" id="cbar">⚡ RECONNECTING...</div>
+
+  <!-- HEADER -->
   <div class="hdr">
     <div class="hl">
       <button class="bbtn" id="chat-back"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M5 12l7 7M5 12l7-7"/></svg>BACK</button>
@@ -321,32 +317,45 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;
       <div class="hsubt" id="chat-subt"></div>
     </div>
     <div class="hr">
+      <!-- VOICE BUTTON in header -->
+      <button class="voice-join-btn" id="voice-join-btn" title="Join Voice Call">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2M12 19v4M8 23h8"/></svg>
+        VOICE
+      </button>
       <div class="ob"><span class="dot"></span><span id="oc">0</span></div>
       <div class="mwrap">
         <button class="mbtn" id="chat-mbtn"><span></span><span></span><span></span></button>
         <div class="dd" id="chat-dd">
-          <button class="ditem" id="dd-invite">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg>INVITE LINK</button>
-          <button class="ditem" id="dd-members">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>MEMBERS</button>
-          <button class="ditem red" id="dd-leave">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4M16 17l5-5-5-5M21 12H9"/></svg>LEAVE ROOM</button>
-          <a class="ditem" href="https://rehan-sandhi.blogspot.com/2026/02/my-license.html" target="_blank">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>LICENSE</a>
-          <a class="ditem" href="https://www.blogger.com/profile/09062209598930883091" target="_blank">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>PROFILE</a>
-          <a class="ditem" href="https://instagram.com/rehan_sandhi_181" target="_blank">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>INSTAGRAM</a>
-          <a class="ditem" href="https://rehansandhi181.blogspot.com" target="_blank">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>PORTFOLIO</a>
-          <a class="ditem" href="https://rehansandhi.netlify.app" target="_blank">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 010 20M12 2a15 15 0 000 20"/></svg>RS DIGITAL ECOSYSTEM</a>
-          <a class="ditem" href="https://rs-appstore.blogspot.com" target="_blank">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>RS APP STORE</a>
+          <button class="ditem" id="dd-invite"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg>INVITE LINK</button>
+          <button class="ditem" id="dd-members"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>MEMBERS</button>
+          <button class="ditem red" id="dd-leave"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4M16 17l5-5-5-5M21 12H9"/></svg>LEAVE ROOM</button>
+          <button class="ditem red" id="dd-delete" style="display:none"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 01-2 2H8a2 2 0 01-2-2L5 6M10 11v6M14 11v6M9 6V4h6v2"/></svg>DELETE ROOM</button>
+          <a class="ditem" href="https://rehan-sandhi.blogspot.com/2026/02/my-license.html" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>LICENSE</a>
+          <a class="ditem" href="https://www.blogger.com/profile/09062209598930883091" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>PROFILE</a>
+          <a class="ditem" href="https://instagram.com/rehan_sandhi_181" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>INSTAGRAM</a>
+          <a class="ditem" href="https://rehansandhi181.blogspot.com" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>PORTFOLIO</a>
+          <a class="ditem" href="https://rehansandhi.netlify.app" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 010 20M12 2a15 15 0 000 20"/></svg>RS DIGITAL ECOSYSTEM</a>
+          <a class="ditem" href="https://rs-appstore.blogspot.com" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>RS APP STORE</a>
         </div>
       </div>
     </div>
   </div>
+
+  <!-- VOICE BAR -->
+  <div class="voice-bar" id="voice-bar">
+    <div class="voice-info">
+      <div class="call-wave"><span></span><span></span><span></span><span></span><span></span></div>
+      <span class="voice-status" id="voice-status">VOICE ACTIVE</span>
+      <div class="voice-peers" id="voice-peers"></div>
+    </div>
+    <div class="voice-controls">
+      <button class="mic-btn" id="mic-toggle" title="Toggle mic">
+        <svg id="mic-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2M12 19v4M8 23h8"/></svg>
+      </button>
+      <button class="end-call-btn" id="end-call-btn">END CALL</button>
+    </div>
+  </div>
+
   <div class="ma" id="ma"><div class="es" id="es">// SECURE CHANNEL OPEN<br><br>Messages auto-delete after 10 minutes</div></div>
   <div class="ti" id="ti"></div>
   <div class="ia">
@@ -360,7 +369,7 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;
   </div>
 </div>
 
-<!-- ═══ INVITE MODAL ═══ -->
+<!-- INVITE MODAL -->
 <div class="modal-bg" id="invite-modal">
   <div class="modal">
     <button class="modal-close" id="inv-close">✕</button>
@@ -369,19 +378,35 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;
     <div class="url-box" id="inv-url"></div>
     <button class="btn btn-sm" id="inv-copy"><span>[ COPY LINK ]</span></button>
     <div id="inv-code-section" style="display:none;margin-top:14px">
-      <div class="lbl">Secret Code (share privately)</div>
-      <div class="code-display" id="inv-code-show"></div>
-      <div class="code-hint">> Share this code separately. Do NOT include in the link.</div>
+      <div class="lbl">Secret Code (share privately!)</div>
+      <div class="code-display" id="inv-code-show">[ Share code separately ]</div>
+      <div class="hint">> Never include the code in the link itself.</div>
     </div>
   </div>
 </div>
 
-<!-- ═══ MEMBERS MODAL ═══ -->
+<!-- MEMBERS MODAL -->
 <div class="modal-bg" id="members-modal">
   <div class="modal">
     <button class="modal-close" id="mem-close">✕</button>
     <div class="modal-title">// ACTIVE MEMBERS</div>
-    <div id="members-list" style="max-height:260px;overflow-y:auto"></div>
+    <div id="members-list" style="max-height:260px;overflow-y:auto;scrollbar-width:thin;scrollbar-color:var(--gd) transparent"></div>
+  </div>
+</div>
+
+<!-- DELETE ROOM MODAL -->
+<div class="modal-bg" id="delete-modal">
+  <div class="modal">
+    <button class="modal-close" id="del-close">✕</button>
+    <div class="modal-title" style="color:var(--red)">// DELETE ROOM</div>
+    <div class="warn-box">
+      ⚠️ This will permanently delete the room and ALL messages.<br>
+      All members will be removed. This cannot be undone.
+    </div>
+    <div class="lbl">Type room name to confirm</div>
+    <input class="inp inp-sm" id="del-confirm" type="text" placeholder="Type room name..." autocomplete="off">
+    <div class="gap"></div>
+    <button class="btn btn-red" id="del-submit"><span>[ PERMANENTLY DELETE ]</span></button>
   </div>
 </div>
 
@@ -395,10 +420,10 @@ import {
   serverTimestamp,query,orderByChild,limitToLast,remove,get,update
 } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js";
 import {
-  getStorage,ref as sr,uploadBytes,getDownloadURL
+  getStorage,ref as sRef,uploadBytes,getDownloadURL,deleteObject,listAll
 } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-storage.js";
 
-/* ── FIREBASE CONFIG ── */
+/* ── FIREBASE ── */
 const cfg={
   apiKey:"AIzaSyCustmjDoqtlYVDfoTnNwB5j-SE57stses",
   authDomain:"noor-in.firebaseapp.com",
@@ -415,7 +440,12 @@ const TTL=10*60*1000,MSG_LIM=100;
 let myNick='',myUid='',currentRoom=null,currentRoomData=null;
 let pendingFiles=[],typT=null,msgTimers={};
 const rendered=new Set();
-let unsubMsgs=null,unsubPres=null,unsubTyp=null;
+let unsubMsgs=null,unsubPres=null,unsubTyp=null,unsubVoice=null,unsubRoomDel=null;
+
+/* ── WEBRTC VOICE STATE ── */
+let localStream=null,peerConnections={},isMuted=false,inCall=false;
+let audioCtx=null,analyserNodes={};
+const ICE_SERVERS={iceServers:[{urls:'stun:stun.l.google.com:19302'},{urls:'stun:stun1.l.google.com:19302'}]};
 
 /* ── UTILS ── */
 const $=id=>document.getElementById(id);
@@ -423,10 +453,10 @@ const esc=s=>String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'
 const genId=()=>Math.random().toString(36).slice(2,10)+Date.now().toString(36);
 const hashCode=async s=>{const b=new TextEncoder().encode(s);const h=await crypto.subtle.digest('SHA-256',b);return Array.from(new Uint8Array(h)).map(x=>x.toString(16).padStart(2,'0')).join('').slice(0,16);};
 let tt;
-function toast(m,dur=3000){const e=$('toast');e.textContent=m;e.classList.add('show');clearTimeout(tt);tt=setTimeout(()=>e.classList.remove('show'),dur);}
+function toast(m,d=3000){const e=$('toast');e.textContent=m;e.classList.add('show');clearTimeout(tt);tt=setTimeout(()=>e.classList.remove('show'),d);}
 function show(id){document.querySelectorAll('.scr').forEach(s=>s.classList.add('off'));$(id).classList.remove('off');}
 
-/* ── MATRIX RAIN ── */
+/* ── MATRIX ── */
 (()=>{
   const c=$('mx'),x=c.getContext('2d');
   const rs=()=>{c.width=innerWidth;c.height=innerHeight;};rs();
@@ -442,107 +472,78 @@ function show(id){document.querySelectorAll('.scr').forEach(s=>s.classList.add('
   },80);
 })();
 
-/* ── BOOT TEXT ── */
-const bts=['INITIALIZING SECURE NODE...','LOADING ENCRYPTION LAYER...','ANONYMIZING IDENTITY...','SYSTEM READY ✓'];
-let bi=0;const biv=setInterval(()=>{bi++;const e=$('bst-txt');if(e&&bi<bts.length)e.textContent=bts[bi];if(bi>=bts.length-1)clearInterval(biv);},1000);
+/* ── BOOT ── */
+const bts=['INITIALIZING...','LOADING ENCRYPTION...','ANONYMIZING IDENTITY...','SYSTEM READY ✓'];
+let bi=0;const biv=setInterval(()=>{bi++;const e=$('bst-txt');if(e&&bi<bts.length)e.textContent=bts[bi];if(bi>=bts.length-1)clearInterval(biv);},900);
 
 /* ── LOAD SAVED ── */
 myNick=localStorage.getItem('gl_nick')||'';
 myUid=localStorage.getItem('gl_uid')||('u_'+Date.now().toString(36)+Math.random().toString(36).slice(2,8));
 localStorage.setItem('gl_uid',myUid);
 
-/* ── CHECK URL FOR ROOM INVITE ── */
-function getRoomFromURL(){
-  const p=new URLSearchParams(location.search);
-  return p.get('room')||null;
-}
+/* ── URL ROOM CHECK ── */
+function getRoomFromURL(){const p=new URLSearchParams(location.search);return p.get('room')||null;}
 
-/* ── NICKNAME SCREEN ── */
 if(myNick){
   $('ni').value=myNick;
-  const invRoom=getRoomFromURL();
-  if(invRoom){
-    // Skip to join with pre-filled room id
-    setTimeout(()=>{
-      $('j-id').value=invRoom;
-      checkJoinRoom();
-    },100);
-    show('js');
-  } else {
-    show('hs');
-    loadHome();
-  }
-} else {
-  show('ns');
-}
+  const inv=getRoomFromURL();
+  if(inv){$('j-id').value=inv;checkJoinRoom();show('js');}
+  else{show('hs');loadHome();}
+}else{show('ns');}
 
+/* ── NICKNAME ── */
 $('ni-btn').addEventListener('click',doSetNick);
 $('ni').addEventListener('keydown',e=>{if(e.key==='Enter')doSetNick();});
 function doSetNick(){
   const n=$('ni').value.trim().replace(/[^a-zA-Z0-9_\-]/g,'').slice(0,20);
   if(!n){toast('> Enter a valid callsign');$('ni').focus();return;}
   myNick=n;localStorage.setItem('gl_nick',myNick);
-  const invRoom=getRoomFromURL();
-  if(invRoom){$('j-id').value=invRoom;checkJoinRoom();show('js');}
+  const inv=getRoomFromURL();
+  if(inv){$('j-id').value=inv;checkJoinRoom();show('js');}
   else{show('hs');loadHome();}
 }
 
-/* ── HOME SCREEN ── */
+/* ── HOME ── */
 $('home-mbtn').addEventListener('click',e=>{e.stopPropagation();$('home-dd').classList.toggle('open');});
 $('go-create').addEventListener('click',()=>show('cgs'));
 $('go-join').addEventListener('click',()=>show('js'));
 
 function loadHome(){
   $('hn-display').textContent=myNick;
-  // Watch public rooms + rooms user is member of
   onValue(ref(db,'rooms'),snap=>{
-    const list=$('groups-list');
-    list.innerHTML='';
-    if(!snap.exists()){list.innerHTML='<div class="no-groups">NO ROOMS FOUND<br><span style="opacity:.5">Create or join one below</span></div>';return;}
+    const list=$('groups-list');list.innerHTML='';
+    if(!snap.exists()){list.innerHTML='<div class="no-groups">NO ROOMS FOUND</div>';return;}
     const rooms=[];
-    snap.forEach(c=>{
-      const r={...c.val(),id:c.key};
-      // Show public rooms OR rooms where user is a member
-      if(r.type==='public'||(r.members&&r.members[myUid])){
-        rooms.push(r);
-      }
-    });
+    snap.forEach(c=>{const r={...c.val(),id:c.key};if(r.type==='public'||(r.members&&r.members[myUid]))rooms.push(r);});
     if(!rooms.length){list.innerHTML='<div class="no-groups">NO ROOMS FOUND<br><span style="opacity:.5">Create or join one below</span></div>';return;}
     rooms.forEach(r=>{
-      const item=document.createElement('div');
-      item.className='group-item';
+      const item=document.createElement('div');item.className='group-item';
       const isMember=r.members&&r.members[myUid];
       const isOwner=r.owner===myUid;
-      const memberCount=r.members?Object.keys(r.members).length:0;
-      item.innerHTML=`
-        <div class="gi-left">
-          <div class="gi-name">${esc(r.name)}</div>
-          <div class="gi-meta">
-            <span class="tag ${r.type==='private'?'tag-prv':'tag-pub'}">${r.type==='private'?'🔒 PRIVATE':'🌐 PUBLIC'}</span>
-            <span>${memberCount} member${memberCount!==1?'s':''}</span>
-            ${isOwner?'<span style="color:var(--gd)">OWNER</span>':''}
-          </div>
+      const mc=r.members?Object.keys(r.members).length:0;
+      item.innerHTML=`<div class="gi-left">
+        <div class="gi-name">${esc(r.name)}</div>
+        <div class="gi-meta">
+          <span class="tag ${r.type==='private'?'tag-prv':'tag-pub'}">${r.type==='private'?'🔒 PRIVATE':'🌐 PUBLIC'}</span>
+          <span>${mc} member${mc!==1?'s':''}</span>
+          ${isOwner?'<span style="color:var(--gd)">OWNER</span>':''}
         </div>
-        <div class="gi-right">
-          ${isMember?'<span style="font-size:9px;color:var(--gd);letter-spacing:1px">JOINED</span>':'<span style="font-size:9px;color:var(--tf);letter-spacing:1px">JOIN →</span>'}
-        </div>`;
+      </div>
+      <div>${isMember?'<span style="font-size:9px;color:var(--gd);letter-spacing:1px">JOINED →</span>':'<span style="font-size:9px;color:var(--tf);letter-spacing:1px">JOIN →</span>'}</div>`;
       item.addEventListener('click',()=>{
-        if(isMember){enterRoom(r.id,r);}
-        else if(r.type==='public'){joinPublicRoom(r.id,r);}
+        if(isMember)enterRoom(r.id,r);
+        else if(r.type==='public')joinPublicRoom(r.id,r);
         else{$('j-id').value=r.id;checkJoinRoom();show('js');}
       });
       list.appendChild(item);
     });
   });
-  // Total online
-  onValue(ref(db,'presence'),s=>{
-    $('total-online').textContent=(s.exists()?Object.keys(s.val()).length:0)+' online';
-  });
+  onValue(ref(db,'presence'),s=>{$('total-online').textContent=(s.exists()?Object.keys(s.val()).length:0)+' online';});
 }
 
-/* ── CREATE GROUP ── */
+/* ── CREATE ── */
 let roomType='public';
-window.setType=function(t){
+window.setType=t=>{
   roomType=t;
   $('tog-pub').classList.toggle('active',t==='public');
   $('tog-prv').classList.toggle('active',t==='private');
@@ -551,31 +552,21 @@ window.setType=function(t){
 $('cg-back').addEventListener('click',()=>show('hs'));
 $('cg-submit').addEventListener('click',async()=>{
   const name=$('cg-name').value.trim();
-  if(!name){toast('> Enter a room name');return;}
-  if(roomType==='private'){
-    const code=$('cg-code').value.trim();
-    if(!code||code.length<3){toast('> Set a secret code (min 3 chars)');return;}
-  }
+  if(!name){toast('> Enter room name');return;}
   const code=$('cg-code').value.trim();
+  if(roomType==='private'&&code.length<3){toast('> Code min 3 chars');return;}
   const roomId=genId();
   const codeHash=roomType==='private'?await hashCode(code):'';
-  const roomData={
-    id:roomId,name,type:roomType,
-    owner:myUid,ownerNick:myNick,
-    codeHash,
-    createdAt:Date.now(),
-    members:{[myUid]:{nick:myNick,joinedAt:Date.now()}}
-  };
+  const rd={id:roomId,name,type:roomType,owner:myUid,ownerNick:myNick,codeHash,createdAt:Date.now(),members:{[myUid]:{nick:myNick,joinedAt:Date.now()}}};
   try{
-    await set(ref(db,'rooms/'+roomId),roomData);
-    $('cg-name').value='';$('cg-code').value='';roomType='public';
-    window.setType('public');
+    await set(ref(db,'rooms/'+roomId),rd);
+    $('cg-name').value='';$('cg-code').value='';roomType='public';window.setType('public');
     toast('> Room created!');
-    enterRoom(roomId,roomData);
+    enterRoom(roomId,rd);
   }catch(e){toast('> Error: '+e.message);}
 });
 
-/* ── JOIN SCREEN ── */
+/* ── JOIN ── */
 $('j-back').addEventListener('click',()=>show('hs'));
 $('j-id').addEventListener('input',checkJoinRoom);
 $('j-submit').addEventListener('click',doJoin);
@@ -584,44 +575,39 @@ $('j-code').addEventListener('keydown',e=>{if(e.key==='Enter')doJoin();});
 let joinRoomCache=null;
 async function checkJoinRoom(){
   const raw=$('j-id').value.trim();
-  // Extract room id from URL if pasted
-  let roomId=raw;
-  try{const u=new URL(raw);roomId=new URLSearchParams(u.search).get('room')||raw;}catch(e){}
-  roomId=roomId.trim();
-  if(!roomId){$('j-code-section').style.display='none';joinRoomCache=null;return;}
+  let rid=raw;
+  try{const u=new URL(raw);rid=new URLSearchParams(u.search).get('room')||raw;}catch(e){}
+  rid=rid.trim();
+  if(!rid){$('j-code-section').style.display='none';joinRoomCache=null;$('j-status').textContent='';return;}
   try{
-    const snap=await get(ref(db,'rooms/'+roomId));
+    const snap=await get(ref(db,'rooms/'+rid));
     if(!snap.exists()){$('j-status').textContent='> Room not found';joinRoomCache=null;return;}
-    const r={...snap.val(),id:roomId};
+    const r={...snap.val(),id:rid};
     joinRoomCache=r;
     $('j-status').textContent='> Found: '+r.name+' ('+r.type+')';
     $('j-code-section').style.display=r.type==='private'?'block':'none';
   }catch(e){$('j-status').textContent='> Error checking room';}
 }
-
 async function doJoin(){
-  if(!joinRoomCache){await checkJoinRoom();if(!joinRoomCache){toast('> Enter a valid room ID or URL');return;}}
+  if(!joinRoomCache){await checkJoinRoom();if(!joinRoomCache){toast('> Enter valid room ID or URL');return;}}
   const r=joinRoomCache;
   if(r.members&&r.members[myUid]){enterRoom(r.id,r);return;}
   if(r.type==='private'){
     const code=$('j-code').value.trim();
-    if(!code){toast('> Enter the secret code');return;}
+    if(!code){toast('> Enter secret code');return;}
     const h=await hashCode(code);
     if(h!==r.codeHash){toast('> Wrong secret code!');return;}
   }
-  // Add as member
   await update(ref(db,'rooms/'+r.id+'/members/'+myUid),{nick:myNick,joinedAt:Date.now()});
   const updated={...r,members:{...(r.members||{}),[myUid]:{nick:myNick,joinedAt:Date.now()}}};
   $('j-code').value='';$('j-id').value='';joinRoomCache=null;$('j-status').textContent='';$('j-code-section').style.display='none';
   toast('> Joined: '+r.name);
   enterRoom(r.id,updated);
 }
-
 async function joinPublicRoom(id,r){
   if(r.members&&r.members[myUid]){enterRoom(id,r);return;}
   await update(ref(db,'rooms/'+id+'/members/'+myUid),{nick:myNick,joinedAt:Date.now()});
-  const updated={...r,members:{...(r.members||{}),[myUid]:{nick:myNick,joinedAt:Date.now()}}};
-  enterRoom(id,updated);
+  enterRoom(id,{...r,members:{...(r.members||{}),[myUid]:{nick:myNick}}});
 }
 
 /* ── ENTER ROOM ── */
@@ -632,32 +618,300 @@ function enterRoom(roomId,roomData){
   $('ma').innerHTML='<div class="es" id="es">// SECURE CHANNEL OPEN<br><br>Messages auto-delete after 10 minutes</div>';
   $('chat-title').textContent=roomData.name||'ROOM';
   $('chat-subt').textContent=(roomData.type==='private'?'🔒 PRIVATE':'🌐 PUBLIC')+' · '+roomId.slice(0,8).toUpperCase();
+  const isOwner=roomData.owner===myUid;
+  $('dd-delete').style.display=isOwner?'flex':'none';
   show('cs');
-  watchConn();updatePres();watchRoomPres();watchTyp();listenMsgs();
+  watchConn();updatePres();watchRoomPres();watchTyp();listenMsgs();watchRoomDeleted();
   setInterval(cleanup,60000);
 }
 
-/* ── BACK FROM CHAT ── */
-$('chat-back').addEventListener('click',leaveChat);
-$('dd-leave').addEventListener('click',leaveChat);
-function leaveChat(){
-  if(unsubMsgs)unsubMsgs();if(unsubPres)unsubPres();if(unsubTyp)unsubTyp();
-  remove(ref(db,'presence/'+myUid)).catch(()=>{});
-  remove(ref(db,'typing/'+currentRoom+'/'+myUid)).catch(()=>{});
-  currentRoom=null;currentRoomData=null;rendered.clear();
-  pendingFiles=[];$('fp').innerHTML='';$('mi2').value='';
-  show('hs');
+/* ── WATCH ROOM DELETED (by owner) ── */
+function watchRoomDeleted(){
+  if(unsubRoomDel)unsubRoomDel();
+  unsubRoomDel=onValue(ref(db,'rooms/'+currentRoom),snap=>{
+    if(!snap.exists()&&currentRoom){
+      toast('> This room has been deleted by the owner.',4000);
+      endVoiceCall();
+      cleanup_leave();
+      show('hs');
+    }
+  });
 }
 
-/* ── CONNECTION ── */
+/* ── BACK / LEAVE ── */
+$('chat-back').addEventListener('click',()=>leaveChat(false));
+$('dd-leave').addEventListener('click',()=>leaveChat(true));
+
+async function leaveChat(removeMember=false){
+  endVoiceCall();
+  if(unsubMsgs)unsubMsgs();if(unsubPres)unsubPres();if(unsubTyp)unsubTyp();if(unsubVoice)unsubVoice();if(unsubRoomDel)unsubRoomDel();
+  remove(ref(db,'presence/'+myUid)).catch(()=>{});
+  remove(ref(db,'typing/'+currentRoom+'/'+myUid)).catch(()=>{});
+  remove(ref(db,'voice/'+currentRoom+'/'+myUid)).catch(()=>{});
+  if(removeMember&&currentRoom){
+    await remove(ref(db,'rooms/'+currentRoom+'/members/'+myUid)).catch(()=>{});
+  }
+  cleanup_leave();
+  show('hs');
+}
+function cleanup_leave(){
+  currentRoom=null;currentRoomData=null;rendered.clear();
+  pendingFiles=[];$('fp').innerHTML='';$('mi2').value='';
+  $('voice-bar').classList.remove('active');
+  $('voice-join-btn').classList.remove('in-call');
+  $('voice-join-btn').innerHTML=`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2M12 19v4M8 23h8"/></svg>VOICE`;
+}
+
+/* ── DELETE ROOM (owner only) ── */
+$('dd-delete').addEventListener('click',()=>{
+  $('del-confirm').value='';
+  $('delete-modal').classList.add('open');
+});
+$('del-close').addEventListener('click',()=>$('delete-modal').classList.remove('open'));
+$('delete-modal').addEventListener('click',e=>{if(e.target===$('delete-modal'))$('delete-modal').classList.remove('open');});
+$('del-submit').addEventListener('click',async()=>{
+  const confirmed=$('del-confirm').value.trim();
+  if(!currentRoomData||confirmed!==currentRoomData.name){toast('> Room name does not match');return;}
+  if(currentRoomData.owner!==myUid){toast('> Only owner can delete');return;}
+  try{
+    // Delete storage files
+    try{
+      const folderRef=sRef(storage,'rooms/'+currentRoom+'/');
+      const res=await listAll(folderRef);
+      await Promise.all(res.items.map(item=>deleteObject(item).catch(()=>{})));
+    }catch(e){}
+    // Delete voice signaling
+    await remove(ref(db,'voice/'+currentRoom)).catch(()=>{});
+    // Delete room (messages + members inside)
+    await remove(ref(db,'rooms/'+currentRoom));
+    $('delete-modal').classList.remove('open');
+    toast('> Room deleted.');
+    endVoiceCall();
+    cleanup_leave();
+    show('hs');
+  }catch(e){toast('> Error: '+e.message);}
+});
+
+/* ══════════════════════════════════════════
+   ── WEBRTC FULL DUPLEX VOICE CHAT ──
+══════════════════════════════════════════ */
+$('voice-join-btn').addEventListener('click',()=>{
+  if(inCall)endVoiceCall();
+  else startVoiceCall();
+});
+$('end-call-btn').addEventListener('click',endVoiceCall);
+$('mic-toggle').addEventListener('click',toggleMic);
+
+async function startVoiceCall(){
+  if(!currentRoom){toast('> Join a room first');return;}
+  try{
+    localStream=await navigator.mediaDevices.getUserMedia({audio:true,video:false});
+    inCall=true;isMuted=false;
+    updateMicUI();
+    $('voice-bar').classList.add('active');
+    $('voice-join-btn').classList.add('in-call');
+    $('voice-join-btn').innerHTML=`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2M12 19v4M8 23h8"/></svg>IN CALL`;
+    // Register in Firebase voice room
+    const myVoiceRef=ref(db,'voice/'+currentRoom+'/'+myUid);
+    await set(myVoiceRef,{nick:myNick,joined:Date.now(),muted:false});
+    onDisconnect(myVoiceRef).remove();
+    // Listen for other voice participants
+    watchVoiceRoom();
+    toast('> Voice call joined. Mic is ON.',2500);
+  }catch(e){
+    toast('> Mic access denied. Check browser permissions.');
+    console.error(e);
+  }
+}
+
+function endVoiceCall(){
+  if(!inCall&&!localStream)return;
+  inCall=false;
+  if(localStream){localStream.getTracks().forEach(t=>t.stop());localStream=null;}
+  // Close all peer connections
+  Object.values(peerConnections).forEach(pc=>{try{pc.close();}catch(e){}});
+  peerConnections={};
+  // Remove remote audio elements
+  document.querySelectorAll('.remote-audio').forEach(a=>a.remove());
+  // Cleanup Firebase signaling
+  if(currentRoom){
+    remove(ref(db,'voice/'+currentRoom+'/'+myUid)).catch(()=>{});
+    remove(ref(db,'signals/'+currentRoom+'/'+myUid)).catch(()=>{});
+  }
+  if(unsubVoice){unsubVoice();unsubVoice=null;}
+  $('voice-bar').classList.remove('active');
+  $('voice-join-btn').classList.remove('in-call');
+  $('voice-join-btn').innerHTML=`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2M12 19v4M8 23h8"/></svg>VOICE`;
+  $('voice-peers').innerHTML='';
+  $('voice-status').textContent='VOICE ACTIVE';
+  isMuted=false;
+}
+
+function toggleMic(){
+  if(!localStream)return;
+  isMuted=!isMuted;
+  localStream.getAudioTracks().forEach(t=>t.enabled=!isMuted);
+  if(currentRoom)update(ref(db,'voice/'+currentRoom+'/'+myUid),{muted:isMuted}).catch(()=>{});
+  updateMicUI();
+  toast(isMuted?'> Mic muted':'> Mic unmuted',1500);
+}
+
+function updateMicUI(){
+  const btn=$('mic-toggle'),icon=$('mic-icon');
+  if(isMuted){
+    btn.classList.add('muted');
+    icon.innerHTML=`<line x1="1" y1="1" x2="23" y2="23"/><path d="M9 9v3a3 3 0 005.12 2.12M15 9.34V4a3 3 0 00-5.94-.6"/><path d="M17 16.95A7 7 0 015 12v-2m14 0v2a7 7 0 01-.11 1.23M12 19v4M8 23h8"/>`;
+  }else{
+    btn.classList.remove('muted');
+    icon.innerHTML=`<path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2M12 19v4M8 23h8"/>`;
+  }
+}
+
+/* ── WATCH VOICE ROOM ── */
+function watchVoiceRoom(){
+  if(unsubVoice)unsubVoice();
+  unsubVoice=onValue(ref(db,'voice/'+currentRoom),async snap=>{
+    const participants={};
+    if(snap.exists())snap.forEach(c=>{participants[c.key]={...c.val()};});
+    // Update peers UI
+    updateVoicePeersUI(participants);
+    // Connect to new peers
+    for(const pid of Object.keys(participants)){
+      if(pid===myUid)continue;
+      if(!peerConnections[pid]){
+        await connectToPeer(pid,pid>myUid);
+      }
+    }
+    // Disconnect from gone peers
+    for(const pid of Object.keys(peerConnections)){
+      if(!participants[pid]){
+        try{peerConnections[pid].close();}catch(e){}
+        delete peerConnections[pid];
+        const audio=document.getElementById('audio-'+pid);
+        if(audio)audio.remove();
+      }
+    }
+    const count=Object.keys(participants).length;
+    $('voice-status').textContent=count+' IN CALL';
+  });
+  // Listen for WebRTC signals directed to me
+  onValue(ref(db,'signals/'+currentRoom+'/'+myUid),async snap=>{
+    if(!snap.exists())return;
+    snap.forEach(async child=>{
+      const signal=child.val();
+      const fromId=signal.from;
+      if(!fromId||fromId===myUid)return;
+      if(signal.type==='offer'){
+        await handleOffer(fromId,signal);
+        remove(child.ref).catch(()=>{});
+      }else if(signal.type==='answer'){
+        await handleAnswer(fromId,signal);
+        remove(child.ref).catch(()=>{});
+      }else if(signal.type==='ice'){
+        await handleIce(fromId,signal);
+        remove(child.ref).catch(()=>{});
+      }
+    });
+  });
+}
+
+function updateVoicePeersUI(participants){
+  const container=$('voice-peers');container.innerHTML='';
+  for(const[pid,p] of Object.entries(participants)){
+    if(pid===myUid){
+      const me=document.createElement('div');
+      me.className='voice-peer';
+      me.textContent=(isMuted?'🔇 ':'🎙️ ')+myNick+' (you)';
+      container.appendChild(me);
+    }else{
+      const peer=document.createElement('div');
+      peer.className='voice-peer';peer.id='peer-ui-'+pid;
+      peer.textContent=(p.muted?'🔇 ':'🎙️ ')+(p.nick||'ghost');
+      container.appendChild(peer);
+    }
+  }
+}
+
+async function connectToPeer(peerId,initiator){
+  if(peerConnections[peerId])return;
+  const pc=new RTCPeerConnection(ICE_SERVERS);
+  peerConnections[peerId]=pc;
+  // Add local stream tracks
+  if(localStream)localStream.getTracks().forEach(t=>pc.addTrack(t,localStream));
+  // Remote audio
+  pc.ontrack=e=>{
+    let audio=document.getElementById('audio-'+peerId);
+    if(!audio){
+      audio=document.createElement('audio');
+      audio.id='audio-'+peerId;
+      audio.className='remote-audio';
+      audio.autoplay=true;
+      audio.playsInline=true;
+      document.body.appendChild(audio);
+    }
+    audio.srcObject=e.streams[0];
+  };
+  // ICE candidates
+  pc.onicecandidate=e=>{
+    if(!e.candidate)return;
+    push(ref(db,'signals/'+currentRoom+'/'+peerId),{
+      type:'ice',from:myUid,candidate:e.candidate.toJSON()
+    }).catch(()=>{});
+  };
+  pc.onconnectionstatechange=()=>{
+    if(pc.connectionState==='failed'||pc.connectionState==='closed'){
+      try{pc.close();}catch(e){}
+      delete peerConnections[peerId];
+    }
+  };
+  if(initiator){
+    const offer=await pc.createOffer();
+    await pc.setLocalDescription(offer);
+    push(ref(db,'signals/'+currentRoom+'/'+peerId),{
+      type:'offer',from:myUid,sdp:offer.sdp
+    }).catch(()=>{});
+  }
+}
+
+async function handleOffer(fromId,signal){
+  if(!peerConnections[fromId])await connectToPeer(fromId,false);
+  const pc=peerConnections[fromId];
+  if(!pc)return;
+  try{
+    await pc.setRemoteDescription(new RTCSessionDescription({type:'offer',sdp:signal.sdp}));
+    const answer=await pc.createAnswer();
+    await pc.setLocalDescription(answer);
+    push(ref(db,'signals/'+currentRoom+'/'+fromId),{
+      type:'answer',from:myUid,sdp:answer.sdp
+    }).catch(()=>{});
+  }catch(e){console.error('handleOffer error',e);}
+}
+
+async function handleAnswer(fromId,signal){
+  const pc=peerConnections[fromId];
+  if(!pc)return;
+  try{
+    if(pc.signalingState==='have-local-offer')
+      await pc.setRemoteDescription(new RTCSessionDescription({type:'answer',sdp:signal.sdp}));
+  }catch(e){console.error('handleAnswer error',e);}
+}
+
+async function handleIce(fromId,signal){
+  const pc=peerConnections[fromId];
+  if(!pc||!signal.candidate)return;
+  try{await pc.addIceCandidate(new RTCIceCandidate(signal.candidate));}
+  catch(e){console.error('handleIce error',e);}
+}
+
+/* ══════════════════════════════════════════
+   ── REST OF CHAT LOGIC ──
+══════════════════════════════════════════ */
 function watchConn(){
   onValue(ref(db,'.info/connected'),s=>{
     if(s.val()===true){$('cbar').classList.remove('show');updatePres();}
     else $('cbar').classList.add('show');
   });
 }
-
-/* ── PRESENCE ── */
 function updatePres(){
   if(!myUid||!myNick||!currentRoom)return;
   const r=ref(db,'presence/'+myUid);
@@ -667,13 +921,10 @@ function updatePres(){
 function watchRoomPres(){
   if(unsubPres)unsubPres();
   unsubPres=onValue(ref(db,'presence'),s=>{
-    let count=0;
-    if(s.exists())s.forEach(c=>{if(c.val().room===currentRoom)count++;});
-    $('oc').textContent=count;
+    let c=0;if(s.exists())s.forEach(x=>{if(x.val().room===currentRoom)c++;});
+    $('oc').textContent=c;
   });
 }
-
-/* ── TYPING ── */
 function watchTyp(){
   if(unsubTyp)unsubTyp();
   unsubTyp=onValue(ref(db,'typing/'+currentRoom),s=>{
@@ -687,18 +938,14 @@ function setTyping(){
   set(ref(db,'typing/'+currentRoom+'/'+myUid),{nick:myNick,ts:serverTimestamp()});
   clearTimeout(typT);typT=setTimeout(()=>remove(ref(db,'typing/'+currentRoom+'/'+myUid)),3000);
 }
-
-/* ── MSG DELETE ── */
 function schedDel(id,ca){
   const d=(ca+TTL)-Date.now();
   if(d<=0){delMsg(id);return;}
-  clearTimeout(msgTimers[id]);
-  msgTimers[id]=setTimeout(()=>delMsg(id),d);
+  clearTimeout(msgTimers[id]);msgTimers[id]=setTimeout(()=>delMsg(id),d);
 }
 function delMsg(id){
   if(!currentRoom)return;
-  remove(ref(db,'rooms/'+currentRoom+'/messages/'+id)).catch(()=>{});
-  delete msgTimers[id];
+  remove(ref(db,'rooms/'+currentRoom+'/messages/'+id)).catch(()=>{});delete msgTimers[id];
 }
 function cleanup(){
   if(!currentRoom)return;
@@ -707,8 +954,6 @@ function cleanup(){
     s.forEach(c=>{const m=c.val();if(m.createdAt&&now-m.createdAt>TTL)remove(ref(db,'rooms/'+currentRoom+'/messages/'+c.key));});
   });
 }
-
-/* ── LISTEN MESSAGES ── */
 function listenMsgs(){
   if(unsubMsgs)unsubMsgs();
   const q=query(ref(db,'rooms/'+currentRoom+'/messages'),orderByChild('createdAt'),limitToLast(MSG_LIM));
@@ -722,19 +967,13 @@ function listenMsgs(){
         if(!rendered.has(m._id)){
           rendered.add(m._id);
           const el=buildMsg(m);
-          const area=$('ma'),es=$('es');
-          if(es)es.remove();
-          area.appendChild(el);
-          schedDel(m._id,m.createdAt);
+          const area=$('ma'),es=$('es');if(es)es.remove();
+          area.appendChild(el);schedDel(m._id,m.createdAt);
         }
       });
     }
     rendered.forEach(id=>{
-      if(!live.has(id)){
-        const el=document.getElementById('m-'+id);
-        if(el)el.remove();
-        rendered.delete(id);clearTimeout(msgTimers[id]);delete msgTimers[id];
-      }
+      if(!live.has(id)){const el=document.getElementById('m-'+id);if(el)el.remove();rendered.delete(id);clearTimeout(msgTimers[id]);delete msgTimers[id];}
     });
     const area=$('ma');
     if(!area.children.length){
@@ -745,15 +984,11 @@ function listenMsgs(){
     area.scrollTop=area.scrollHeight;
   });
 }
-
 function buildMsg(m){
   const own=m.uid===myUid;
   const exp=Math.max(0,(m.createdAt+TTL)-Date.now());
-  const row=document.createElement('div');
-  row.className='mr '+(own?'own':'other');row.id='m-'+m._id;
-  if(m.type==='system'){
-    row.className='sys-msg';row.id='m-'+m._id;row.textContent=m.text||'';return row;
-  }
+  if(m.type==='system'){const d=document.createElement('div');d.className='sys-msg';d.id='m-'+m._id;d.textContent=m.text||'';return d;}
+  const row=document.createElement('div');row.className='mr '+(own?'own':'other');row.id='m-'+m._id;
   const mt=document.createElement('div');mt.className='mm';
   const t=new Date(m.createdAt).toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'});
   mt.innerHTML=own?`<span style="opacity:.5">${t}</span>`:`<span class="mnick">${esc(m.nick||'ghost')}</span><span style="opacity:.5">${t}</span>`;
@@ -769,16 +1004,10 @@ function buildMsg(m){
     bb.appendChild(a);
   }else{bb.textContent=m.text||'';}
   const cb=document.createElement('div');cb.className='cb';
-  cb.style.width=((exp/TTL)*100)+'%';
-  bb.appendChild(cb);row.appendChild(bb);
+  cb.style.width=((exp/TTL)*100)+'%';bb.appendChild(cb);row.appendChild(bb);
   requestAnimationFrame(()=>{cb.style.transition=`width ${exp}ms linear`;cb.style.width='0%';});
-  const ex=document.createElement('div');ex.className='me';ex.textContent='⏳ ~'+Math.ceil(exp/60000)+'m';
-  row.appendChild(ex);
-  const et=setInterval(()=>{
-    const r=Math.max(0,(m.createdAt+TTL)-Date.now());
-    if(!r){clearInterval(et);return;}
-    ex.textContent='⏳ ~'+Math.ceil(r/60000)+'m';
-  },30000);
+  const ex=document.createElement('div');ex.className='me';ex.textContent='⏳ ~'+Math.ceil(exp/60000)+'m';row.appendChild(ex);
+  const et=setInterval(()=>{const r=Math.max(0,(m.createdAt+TTL)-Date.now());if(!r){clearInterval(et);return;}ex.textContent='⏳ ~'+Math.ceil(r/60000)+'m';},30000);
   return row;
 }
 
@@ -791,7 +1020,7 @@ async function sendMsg(){
   try{
     for(const f of pendingFiles){
       const isImg=f.type.startsWith('image/');
-      const r=sr(storage,'rooms/'+currentRoom+'/'+Date.now()+'_'+f.name);
+      const r=sRef(storage,'rooms/'+currentRoom+'/'+Date.now()+'_'+f.name);
       const sn=await uploadBytes(r,f);const url=await getDownloadURL(sn.ref);
       await push(ref(db,'rooms/'+currentRoom+'/messages'),{uid:myUid,nick:myNick,type:isImg?'image':'file',fileUrl:url,fileName:f.name,createdAt:Date.now(),serverTs:serverTimestamp()});
     }
@@ -806,25 +1035,22 @@ async function sendMsg(){
 }
 $('sb').addEventListener('click',sendMsg);
 $('mi2').addEventListener('keydown',e=>{if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();sendMsg();}});
-$('mi2').addEventListener('input',()=>{
-  const el=$('mi2');el.style.height='auto';el.style.height=Math.min(el.scrollHeight,110)+'px';setTyping();
-});
+$('mi2').addEventListener('input',()=>{const el=$('mi2');el.style.height='auto';el.style.height=Math.min(el.scrollHeight,110)+'px';setTyping();});
 
 /* ── FILES ── */
 $('ab').addEventListener('click',()=>$('fi').click());
 $('fi').addEventListener('change',e=>{
   Array.from(e.target.files).forEach(f=>{
-    if(f.size>10*1024*1024){toast('> Max 10MB per file');return;}
+    if(f.size>10*1024*1024){toast('> Max 10MB');return;}
     pendingFiles.push(f);
     const strip=$('fp'),item=document.createElement('div');item.className='fpi';
     const rm=()=>{pendingFiles=pendingFiles.filter(x=>x!==f);item.remove();};
     if(f.type.startsWith('image/')){
       const r=new FileReader();
-      r.onload=ev=>{item.innerHTML=`<img src="${ev.target.result}"><span>${esc(f.name)}</span>`;
-        const b=document.createElement('button');b.className='rf';b.textContent='✕';b.onclick=rm;item.appendChild(b);};
+      r.onload=ev=>{item.innerHTML=`<img src="${ev.target.result}"><span>${esc(f.name)}</span>`;const b=document.createElement('button');b.className='rf';b.textContent='✕';b.onclick=rm;item.appendChild(b);};
       r.readAsDataURL(f);
     }else{
-      item.innerHTML=`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:18px;height:18px;flex-shrink:0"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg><span>${esc(f.name)}</span>`;
+      item.innerHTML=`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:16px;height:16px;flex-shrink:0"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg><span>${esc(f.name)}</span>`;
       const b=document.createElement('button');b.className='rf';b.textContent='✕';b.onclick=rm;item.appendChild(b);
     }
     strip.appendChild(item);
@@ -833,20 +1059,14 @@ $('fi').addEventListener('change',e=>{
 
 /* ── MENUS ── */
 $('chat-mbtn').addEventListener('click',e=>{e.stopPropagation();$('chat-dd').classList.toggle('open');});
-document.addEventListener('click',()=>{
-  document.querySelectorAll('.dd').forEach(d=>d.classList.remove('open'));
-});
+document.addEventListener('click',()=>document.querySelectorAll('.dd').forEach(d=>d.classList.remove('open')));
 
-/* ── INVITE MODAL ── */
+/* ── INVITE ── */
 $('dd-invite').addEventListener('click',()=>{
   if(!currentRoom)return;
-  const base=location.origin+location.pathname;
-  const url=`${base}?room=${currentRoom}`;
+  const url=location.origin+location.pathname+'?room='+currentRoom;
   $('inv-url').textContent=url;
-  if(currentRoomData&&currentRoomData.type==='private'){
-    $('inv-code-section').style.display='block';
-    $('inv-code-show').textContent='[ Share code separately ]';
-  }else{$('inv-code-section').style.display='none';}
+  $('inv-code-section').style.display=currentRoomData?.type==='private'?'block':'none';
   $('invite-modal').classList.add('open');
 });
 $('inv-copy').addEventListener('click',()=>{
@@ -858,17 +1078,16 @@ $('inv-copy').addEventListener('click',()=>{
 $('inv-close').addEventListener('click',()=>$('invite-modal').classList.remove('open'));
 $('invite-modal').addEventListener('click',e=>{if(e.target===$('invite-modal'))$('invite-modal').classList.remove('open');});
 
-/* ── MEMBERS MODAL ── */
+/* ── MEMBERS ── */
 $('dd-members').addEventListener('click',()=>{
   if(!currentRoom)return;
   get(ref(db,'rooms/'+currentRoom+'/members')).then(s=>{
     const list=$('members-list');list.innerHTML='';
-    if(!s.exists()){list.innerHTML='<div style="color:var(--tf);font-size:10px;padding:16px;text-align:center">No members found</div>';return;}
+    if(!s.exists()){list.innerHTML='<div style="color:var(--tf);font-size:10px;padding:16px;text-align:center">No members</div>';return;}
     s.forEach(c=>{
-      const m=c.val();
+      const m=c.val(),isOwner=currentRoomData&&currentRoomData.owner===c.key;
       const div=document.createElement('div');
       div.style.cssText='padding:10px 0;border-bottom:1px solid var(--bd);display:flex;align-items:center;justify-content:space-between;gap:8px';
-      const isOwner=currentRoomData&&currentRoomData.owner===c.key;
       div.innerHTML=`<span style="font-size:11px;letter-spacing:1px;color:var(--g)">${esc(m.nick||'ghost')}</span>${isOwner?'<span style="font-size:9px;color:var(--gd);letter-spacing:1px;border:1px solid var(--gd);padding:2px 6px">OWNER</span>':''}`;
       list.appendChild(div);
     });
