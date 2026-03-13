@@ -2,7 +2,7 @@
   "name": "GhostLine",
   "short_name": "GhostLine",
   "description": "Anonymous · Encrypted · Ephemeral Chat",
-  "start_url": "/index.html",
+  "start_url": "https://rsandhi37-hash.github.io/ghostline/",
   "scope": "/",
   "display": "fullscreen",
   "orientation": "portrait-primary",
