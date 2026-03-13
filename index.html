@@ -138,7 +138,7 @@ const swStatus=document.getElementById("sw-status");
 if("serviceWorker" in navigator){
   window.addEventListener("load",async()=>{
     try{
-      const reg=await navigator.serviceWorker.register("/sw.js",{scope:"/"});
+      const reg=await navigator.serviceWorker.register("sw.js",{scope:"./"});
       swStatus.textContent=navigator.serviceWorker.controller?"APP MODE ACTIVE ✓":"SECURE NODE CONNECTED";
       reg.addEventListener("updatefound",()=>{
         const nw=reg.installing;

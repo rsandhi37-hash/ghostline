@@ -8,11 +8,9 @@ const STATIC_CACHE = 'ghostline-static-v1';
 
 // Files to cache for offline use
 const PRECACHE_URLS = [
-  '/index.html',
-  '/ghostline.html',
-  '/manifest.json',
-  '/icons/icon-192.png',
-  '/icons/icon-512.png'
+  'index.html',
+  'ghostline.html',
+  'manifest.json'
 ];
 
 // External CDN URLs to cache (fonts, firebase)
